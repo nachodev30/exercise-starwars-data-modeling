@@ -33,9 +33,6 @@ class Planet(Base):
     population = Column(String(100), nullable=False)
     climate = Column(String(100), nullable=False)
     terrain = Column(String(100), nullable=False)
-    surface_water = Column(String(100), nullable=False)
-    created = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
-    edited = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
     
     favorites = relationship('Favorite', backref='planet', lazy=True)
 
@@ -51,12 +48,7 @@ class Vehicle(Base):
     cost_in_credits = Column(String(100), nullable=False)
     crew = Column(String(100), nullable=False)
     max_atmosphering_speed = Column(String(100), nullable=False)
-    cargo_capacity = Column(String(100), nullable=False)
-    consumables = Column(String(100), nullable=False)
-    url = Column(String(200), nullable=False)
-    created = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
-    edited = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
-    
+
     favorites = relationship('Favorite', backref='vehicle', lazy=True)
 
 class People(Base):
@@ -68,13 +60,6 @@ class People(Base):
     eye_color = Column(String(100), nullable=False)
     gender = Column(String(100), nullable=False)
     hair_color = Column(String(100), nullable=False)
-    height = Column(String(20), nullable=False)
-    mass = Column(String(40), nullable=False)
-    skin_color = Column(String(20), nullable=False)
-    homeworld = Column(String(40), nullable=False)
-    url = Column(String(100), nullable=False)
-    created = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
-    edited = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
     
     favorites = relationship('Favorite', backref='people', lazy=True)
 
